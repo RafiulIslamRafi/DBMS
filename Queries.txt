@@ -1,0 +1,25 @@
+select dept_name from department where budget>10000;
+
+select dept_name,budget from department where budget>10000;
+
+
+
+SELECT dept_name FROM instructor;
+
+SELECT distinct dept_name FROM instructor;
+
+//just view (with data changed) hoy, but main table er data change hoy na.
+select ID,salary*1.1 from instructor;
+			  
+select ID,salary*1.1 from instructor where salary>50000; 
+
+//single cotation care hobe na.
+select name from instructor where dept_name='CSE';
+
+
+
+SELECT course_id FROM section;
+
+//merge two table... //but not work for same attribute..
+select name,salary,dept_name,course_id,semester,year from instructor,teaches;
+select name,salary,dept_name,course_id,semester,year from instructor,teaches where instructor.ID=teaches.ID;
