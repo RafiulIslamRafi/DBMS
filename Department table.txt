@@ -1,0 +1,20 @@
+create table Department
+(dept_name varchar(30),
+building varchar(20),
+budget numeric(12,2),
+primary key(dept_name));
+
+insert into department
+	values('Biology','Watson',90000);
+insert into department
+	values('CSE','Taylor',100000);
+insert into department
+	values('EEE','Taylor',85000);
+insert into department
+	values('Finance','Painter',120000);
+insert into department
+	values('History','Painter',50000);
+insert into department
+	values('Music','Pachard',80000);
+insert into department
+	values('Physics','Watson',70000);
