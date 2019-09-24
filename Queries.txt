@@ -23,3 +23,9 @@ SELECT course_id FROM section;
 //merge two table... //but not work for same attribute..
 select name,salary,dept_name,course_id,semester,year from instructor,teaches;
 select name,salary,dept_name,course_id,semester,year from instructor,teaches where instructor.ID=teaches.ID;
+
+
+select name,instructor.dept_name,building from instructor, department where instructor.dept_name = department.dept_name;
+//as dep't dile new name dekhay...
+select name,instructor.dept_name as dept,building from instructor, department where instructor.dept_name = department.dept_name;
+select name,course_id from instructor, teaches where instructor.id=teaches.id and dept_name='CSE';
