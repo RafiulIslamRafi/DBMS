@@ -1,31 +1,122 @@
-select dept_name from department where budget>10000;
+/////////////////Basic Queries///////////////////////
+................................................
+select dept_name 
+from department
+where budget>10000;
 
-select dept_name,budget from department where budget>10000;
+select dept_name,budget
+from department
+where budget>10000;
 
-
-
-SELECT dept_name FROM instructor;
-
-SELECT distinct dept_name FROM instructor;
-
-//just view (with data changed) hoy, but main table er data change hoy na.
-select ID,salary*1.1 from instructor;
-			  
-select ID,salary*1.1 from instructor where salary>50000; 
-
-//single cotation care hobe na.
-select name from instructor where dept_name='CSE';
+SELECT dept_name
+FROM instructor;
 
 
+///////distinct/////////
+//jsob dep't e instructor ace, sei dep't name gula dekhao.
+//ekoi dep't e multiple instructor thakte pare...
+SELECT distinct dept_name
+FROM instructor;
 
-SELECT course_id FROM section;
+//just view (with data changed), but main table er data change hoy na.
+select ID,salary*1.1
+from instructor;
+
+// salary*1.1====salary+salary*10/100;			  
+select ID,salary*1.1
+from instructor
+where salary>50000; 
+
+//string single cotation cara hobe na.
+select name
+from instructor
+where dept_name='CSE';
+
+SELECT course_id
+FROM section;
+
+
+////////////////////////CROSE PRODUCT///////////////////////
+............................................................
 
 //merge two table... //but not work for same attribute..
-select name,salary,dept_name,course_id,semester,year from instructor,teaches;
-select name,salary,dept_name,course_id,semester,year from instructor,teaches where instructor.ID=teaches.ID;
 
+//eitay id select korle kaj kore na. cause, id 2 table eroi same attribute.
+select name,salary,dept_name,course_id,semester,year
+from instructor,teaches;
 
-select name,instructor.dept_name,building from instructor, department where instructor.dept_name = department.dept_name;
+select name,salary,dept_name,course_id,semester,year
+from instructor,teaches
+where instructor.ID=teaches.ID;
+
+//jsob department e instructor ace, oi dep't er name, instructor er name, ar j building e ace, sei building er name dekhao..
+select name, instructor.dept_name,building
+from instructor, department
+where instructor.dept_name = department.dept_name;
+
 //as dep't dile new name dekhay...
-select name,instructor.dept_name as dept,building from instructor, department where instructor.dept_name = department.dept_name;
-select name,course_id from instructor, teaches where instructor.id=teaches.id and dept_name='CSE';
+select name, instructor.dept_name as dept, building 
+from instructor, department
+where instructor.dept_name = department.dept_name;
+
+//cse dep't er jsob instructor ekoi shathe teacher,tader name and course id dekhao..
+select name, course_id
+from instructor, teaches
+where instructor.id=teaches.id and dept_name='CSE';
+
+
+/////////////////order by///////////////
+.........................................................
+
+//ascending sorting with its salary..
+select *
+from instructor
+order by salary;
+
+//descending sorting with its salary..
+select *
+from instructor
+order by salary desc;
+
+//salary descending sort hoye jaoyar por, jader salary same, tader name onujayee sort hobe..
+select *
+from instructor
+order by salary desc, name asc;
+
+
+////////////////////RANGE: (......between ..... and.....)////////////////////////
+..................................................
+
+//same to next query..
+select name
+from instructor
+where salary>10000 and salary<50000;
+
+///another way of a range showing....
+select name
+from instructor
+where salary between 10000 and 50000;
+
+//but range na thakle and diyei korte hobe..
+select *
+from instructor
+where dept_name='CSE' and salary> 50000;
+
+
+//////////////////////Union///////////////////////////
+.....................................................
+
+//
+(select course_id
+from section
+where semester='Fall' and year=2009)
+union
+(select course_id
+from section
+where semester='Spring' and year=2010);
+
+
+
+
+
+///next update is coming soon...
