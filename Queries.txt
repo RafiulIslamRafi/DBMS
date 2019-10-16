@@ -1,5 +1,6 @@
 /////////////////Basic Queries///////////////////////
 ................................................
+
 select dept_name 
 from department
 where budget>10000;
@@ -18,7 +19,7 @@ FROM instructor;
 SELECT distinct dept_name
 FROM instructor;
 
-//just view (with data changed), but main table er data change hoy na.
+//just view (with data changed), but main table er data change hoy na. main table change korar jonno update query use korte hobe,ja next e ace..
 select ID,salary*1.1
 from instructor;
 
@@ -36,6 +37,9 @@ SELECT course_id
 FROM section;
 
 
+
+
+
 ////////////////////////CROSE PRODUCT///////////////////////
 ............................................................
 
@@ -45,6 +49,7 @@ FROM section;
 select name,salary,dept_name,course_id,semester,year
 from instructor,teaches;
 
+//
 select name,salary,dept_name,course_id,semester,year
 from instructor,teaches
 where instructor.ID=teaches.ID;
@@ -65,6 +70,8 @@ from instructor, teaches
 where instructor.id=teaches.id and dept_name='CSE';
 
 
+
+
 /////////////////order by///////////////
 .........................................................
 
@@ -73,7 +80,7 @@ select *
 from instructor
 order by salary;
 
-//descending sorting with its salary..
+//descending sorting with its salary.. with desk keyword.
 select *
 from instructor
 order by salary desc;
@@ -84,10 +91,12 @@ from instructor
 order by salary desc, name asc;
 
 
+
+
 ////////////////////RANGE: (......between ..... and.....)////////////////////////
 ..................................................
 
-//same to next query..
+//same to next query.. (without using ......between ....and....)
 select name
 from instructor
 where salary>10000 and salary<50000;
@@ -103,10 +112,12 @@ from instructor
 where dept_name='CSE' and salary> 50000;
 
 
+
+
 //////////////////////Union///////////////////////////
 .....................................................
 
-//
+///
 (select course_id
 from section
 where semester='Fall' and year=2009)
@@ -118,5 +129,79 @@ where semester='Spring' and year=2010);
 
 
 
+///kaj baki ace.... intersect, expect, update, aggregate function, null value er..
+//update will coming soon.
 
-///next update is coming soon...
+
+
+
+
+
+/////////////////////////group by/////////////////////
+.....................................................
+
+//department wise average salary dekhabe..
+select dept_name, avg(salary)
+from instructor
+group by dept_name;
+
+//and jsob dep't er avg salary 70000 er beshi, tader dekhao... group by er jonno having clause use korte hobe. 
+//group by er part.........///////////////having//////////
+select dept_name, avg(salary)
+from instructor
+group by dept_name
+having avg(salary)>70000;
+
+
+
+
+
+
+//////////////////////////in/////////////////////
+................................................
+
+//jsob course fall 2009 and spring 2010 e porano hoice tader course I'd dekhao.. 
+//(another system using in keyword)
+Select distinct course_id
+	from section
+	where semester='Fall' and year=2009 and
+	course_id in (Select course_id
+		from section
+		where semester='Spring' and year=2010);
+
+
+/////////////////////////not in/////////////////////
+................................................
+
+//jsob course fall 2009 e hoice kintu spring 2010 e porano hoi nai tader course I'd dekhao..
+//(another system using not in keyword)
+Select distinct course_id
+	from section
+	where semester='Fall' and year=2009 and
+	course_id not in (Select course_id
+		from section
+		where semester='Spring' and year=2010);
+
+
+
+
+////////////////////////////Some complex Query////////////////////////
+//update will coming soon.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////Exercise of book/////////////////////////////////
+//update will coming soon.
