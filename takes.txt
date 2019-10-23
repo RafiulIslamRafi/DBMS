@@ -1,0 +1,58 @@
+//table creation..
+create table takes
+(ID varchar(10),
+course_id varchar(10),
+sec_id numeric(2),
+semester varchar(15),
+year numeric(5),
+grade varchar(5),
+primary key(ID,course_id,sec_id,semester,year),
+foreign key(course_id,sec_id,semester,year) references section);
+
+
+
+////value inserting...
+insert into takes
+	values('00128','CS-101',1,'Fall',2009,'A');
+insert into takes
+	values('00128','CS-347',1,'Fall',2009,'A-');
+insert into takes
+	values('12345','CS-101',1,'Fall',2009,'C');
+insert into takes
+	values('12345','CS-190',2,'Spring',2009,'A');
+insert into takes
+	values('12345','CS-315',1,'Spring',2010,'A');
+insert into takes
+	values('12345','CS-347',1,'Fall',2009,'A');
+insert into takes
+	values('19991','HIS-351',1,'Spring',2010,'B');
+insert into takes
+	values('23121','FIN-201',1,'Spring',2010,'C+');
+insert into takes
+	values('44553','PHY-101',1,'Fall',2009,'B-');
+insert into takes
+	values('45678','CS-101',1,'Fall',2009,'F');
+insert into takes
+	values('45678','CS-101',1,'Spring',2010,'B+');
+insert into takes
+	values('45678','CS-319',1,'Spring',2010,'B');
+insert into takes
+	values('54321','CS-101',1,'Fall',2009,'A-');
+insert into takes
+	values('54321','CS-190',2,'Spring',2009,'B+');
+insert into takes
+	values('55739','MU-199',1,'Spring',2010,'A-');
+insert into takes
+	values('76543','CS-101',1,'Fall',2009,'A');
+insert into takes
+	values('76543','CS-319',2,'Spring',2010,'A');
+insert into takes
+	values('76543','EE-181',1,'Spring',2009,'C');
+insert into takes
+	values('98765','CS-101',1,'Fall',2009,'C-');
+insert into takes
+	values('98765','CS-315',1,'Spring',2010,'B');
+insert into takes
+	values('98988','BIO-101',1,'Summer',2009,'A');
+insert into takes
+	values('98988','BIO-301',1,'Summer',2010,'null');
