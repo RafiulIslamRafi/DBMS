@@ -70,6 +70,15 @@ from instructor, teaches
 where instructor.id=teaches.id and dept_name='CSE';
 
 
+////////////////////rename operation: as clause///////////////
+................................................................
+
+//Q: find the name of all instructors whose salary is greater than at least one instructor in the cse department. (page: 75)
+//boi er solution vull ace, why wrong? find yourself..
+select distinct t.name
+from instructor as t, instructor as s
+where t.salary>s.salary and s.dept_name='CSE' and t.dept_name='CSE';
+
 
 
 /////////////////order by///////////////
@@ -117,7 +126,7 @@ where dept_name='CSE' and salary> 50000;
 //////////////////////Union///////////////////////////
 .....................................................
 
-///
+//find the set of all courses taught either fall 2009 or in spring 2010..(80 page.)
 (select course_id
 from section
 where semester='Fall' and year=2009)
@@ -129,29 +138,86 @@ where semester='Spring' and year=2010);
 
 
 
-///kaj baki ace.... intersect, expect, update, aggregate function, null value er..
+///////////////////////intersect: is not work in the xampp software..//////////////////////////////////////
+//find the set of all courses taught in the fall 2009 as well as in Spring 2010..
+(select course_id
+from section
+where semester='Fall' and year=2009)
+intersect
+(select course_id
+from section
+where semester='Spring' and year=2010);
+
+
+
+
+//////////////////////expect: is not work in the xampp software..//////////////////////////// 
+//find all courses tought in fall in 2009 semester but not in the spring 2010 semester.
+(select course_id
+from section
+where semester='Fall' and year=2009)
+except
+(select course_id
+from section
+where semester='Spring' and year=2010);
+
+
+
+
+///kaj baki ace.... string operation, update, null value, group by(some), having(some)  er..
 //update will coming soon.
 
 
 
 
 
+//////////////////////////Aggregate Function/////////////////////
+//////////////avg(), min(), max(), sum(), count()/////////////////
+...................................................................
 
-/////////////////////////group by/////////////////////
-.....................................................
+///////////basic aggregate////////////
 
+//Q: Find the average salary of instructors of CSE department. 
+//avg(salary) ber hoy shathe eitai attribute name hishebe dekhay.. Ekta ignore er jonno next query.
+select avg(salary)
+from instructor
+where dept_name='CSE';
+
+//same as previous query.. but change the attribute.
+select avg(salary) as avg_salary
+from instructor
+where dept_name='CSE';
+
+//Q: find the total number of instructors who teach a course in the spring 2010 semester.
+//inserted table e sob teacheroi instructor. and so,
+select count(distinct id)
+from teaches
+where semester='spring' and year=2010;
+
+//Q: find the average salary of all instructors(86 page).
+SELECT avg(salary)
+from instructor;
+
+
+
+///////////Aggregate with grouping///////////
+
+//Q: Find the average salary in each department(87 page).
 //department wise average salary dekhabe..
 select dept_name, avg(salary)
 from instructor
 group by dept_name;
 
-//and jsob dep't er avg salary 70000 er beshi, tader dekhao... group by er jonno having clause use korte hobe. 
+//Q: previous question and jsob dep't er avg salary 70000 er beshi, tader dekhao... group by er jonno having clause use korte hobe. 
 //group by er part.........///////////////having//////////
 select dept_name, avg(salary)
 from instructor
 group by dept_name
 having avg(salary)>70000;
 
+
+
+////////////Aggregate with grouping with having clause////////////
 
 
 
@@ -186,22 +252,4 @@ Select distinct course_id
 
 
 ////////////////////////////Some complex Query////////////////////////
-//update will coming soon.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////Exercise of book/////////////////////////////////
 //update will coming soon.
