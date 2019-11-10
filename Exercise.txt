@@ -1,0 +1,100 @@
+///////////////////3.1: 105 page/////////////////////
+(a)
+select title
+from course
+where credits=3;
+
+(b)
+select distinct student.id
+from ((instructor join teaches using(id)) join (student join takes using(id)) using(course_id,semester,year))
+where instructor.name = 'Einstein';
+
+(c)
+select max(salary)
+from instructor;
+
+(d)
+select id,name,dept_name
+from instructor
+where salary = (select max(salary) from instructor);
+
+(e)
+select course_id, sec_id,count(id)
+from section natural join takes 
+where semester = 'Autumn' and year = 2009;
+group by course_id, sec_id;
+
+(f)
+select max(enrollment)
+from(select count(id) as enrollment
+from section natural join takes 
+where semester = 'Autumn' and year = 2009;
+group by course_id, sec_id);
+
+(g)
+
+
+//////////////////////////////////
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+
+()
+
+

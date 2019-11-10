@@ -1,0 +1,5 @@
+CREATE TABLE classroom(
+building varchar(15),
+room_number numeric(6),
+capacity numeric(2),
+PRIMARY KEY (building));

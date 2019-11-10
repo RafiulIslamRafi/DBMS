@@ -1,0 +1,4 @@
+CREATE TABLE advisor(
+    s_id varchar(8),
+    i_id varchar(8),
+    PRIMARY KEY (s_ID, i_ID)); 

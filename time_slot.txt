@@ -1,0 +1,8 @@
+CREATE TABLE time_slot(
+    time_slo_id varchar(8),
+    day varchar(9),
+    start_time varchar(10),
+    end_time varchar(10),
+    PRIMARY KEY(time_slo_id, day, start_time)); 
+
+
