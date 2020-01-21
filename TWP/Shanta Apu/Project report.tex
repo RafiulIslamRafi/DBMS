@@ -1,0 +1,121 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2cm,includefoot]{geometry}
+\usepackage{graphicx}	
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\vspace*{0.5 cm}
+		\textsc{\bfseries\LARGE JATIYA KABI KAZI NAZRUL ISLAM\newline\newline UNIVERSITY}\\[2.0 cm]	
+		\textsc{\bfseries\Large Computer Science And Engineering}\\[0.5 cm]			
+		\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+		\bfseries \Huge Arduino Projects: Home Automation System
+		\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+		
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+			\centering	\emph{	Examiner:}\\
+			 Mst.Jannatul Ferdous \\
+			 	\centering	\emph{	Supervisor:}\\
+			Indrani Mondal\\
+			Assistant Professor\\
+			Dept. of CSE\\
+			JKKNIU\\
+			\end{flushleft}
+		\end{minipage}\\[4 cm]   
+	\begin{minipage}{0.4\textwidth}
+\centering\large 10 november,2018
+	\end{minipage}\\[4 cm]  
+		
+	\end{titlepage}
+\pagenumbering{roman}
+\section*{Abstract}
+\large Nowadays, people have smartphones with them all the time. So it makes sense to use these to control home appliances.\vspace*{0.5 cm} Presented here is a home automation system using a simple Android app, which we can use to control electrical appliances with clicks or voice commands. Commands are sent via Bluetooth to Arduino Uno.\vspace*{0.5 cm} So we need not get up to switch on or switch off the device while watching a movie or doing some work.
+\cleardoublepage
+\section*{Acknowladgement}
+\large Arduino Uno is based on ATmega328 microcontroller (MCU). It consists of 14 digital input/output pins, six analogue inputs, a USB connection for programming the onboard MCU, a power jack, an ICSP header and a reset button. \vspace*{0.5 cm}Arduino is operated with a 16MHz crystal oscillator and contains everything needed to support the MCU. It is very easy to use as you simply need to connect it to a computer using a USB cable, or power it with an AC-to-DC adaptor or battery to get started.\vspace*{0.5 cm}The MCU onboard is programmed in Arduino programming language using Arduino IDE.So it is important for us.
+\cleardoublepage
+\section*{\centering Dedication}
+\large To My Loving Parents
+\cleardoublepage
+\listoffigures Bluetooth module\\
+\cleardoublepage
+\listoftables
+Development 
+\cleardoublepage
+\tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Introduction}\label{sec:intro}
+Arduino is an open source electronics prototyping platform based on flexible, easy-to-use hardware and software. It is intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments.\vspace*{0.5 cm}The home automation circuit is built around an Arduino Uno board, Bluetooth module HC-05 and a 3-channel relay board. The number of channels depends on the number of appliances you wish to control.\vspace*{0.5 cm} Arduino Uno is powered with a 12V DC adaptor/power source. The relay module and Bluetooth module can be, in turn, powered using a board power supply of Arduino Uno.
+	\newpage
+	\section{Theoritical Development}\label{sec:TD}
+	 Arduino Uno is powered with a 12V DC adaptor/power source. The relay module and Bluetooth module can be, in turn, powered using a board power supply of Arduino Uno. Author’s prototype is shown in Fig. 1. Connection details for each appliance are shown in Fig. 2.\\[0.5 cm]\\
+	\begin{minipage}{0.3\textwidth}	
+%		\flushbottom{\includegraphics[width=0.8\textwidth]{fig-1-1-649x420}}\\
+		\figurename{1: Author’s prototype}
+	\end{minipage}\\[0.3 cm]\\
+More about this will found on page\pageref{sec:intro}\\[0.3 cm]\\
+	\begin{minipage}{0.3\textwidth}	
+%	\flushbottom{\includegraphics[width=0.8\textwidth]{fig-2-1-624x420}}\\
+	\figurename{2: Connections for the appliances}
+\end{minipage}\\[0.3 cm]\\
+	\subsection{Bluetooth module}
+	
+	Bluetooth module used in this project is HC-05 (Fig. 4), which supports master and slave mode serial communication (9600-115200 bps) SPP and UART interface.\\ Using these features it can communicate with other Bluetooth-enabled devices like mobile phones, tablets and laptops. The module runs on 3.3V to 5V power supply.\\[0.5 cm]\\
+		\begin{minipage}{0.3\textwidth}	
+%		\flushbottom{\includegraphics[width=0.8\textwidth]{fig-4-487x420}}\\
+		\figurename{2: Connections for the appliances}
+	\end{minipage}\\[0.3 cm]\\
+	\subsection{Relay module}
+A relay allows you to turn on or turn off a circuit using voltage and/or current much higher than what Arduino could handle. Relay provides complete isolation between the low-voltage circuit on Arduino side and the high-voltage side controlling the load. It gets activated using 5V from Arduino, which, in turn, controls electrical appliances like fans, lights and air-conditioners. An 8-channel relay module is shown in Fig. 5.\\[0.5 cm]\\
+	\begin{minipage}{0.3\textwidth}	
+%	\flushbottom{\includegraphics[width=0.8\textwidth]{fig-5-696x153}}\\
+	\figurename{2: Connections for the appliances}
+\end{minipage}\\[0.3 cm]\\
+	\cleardoublepage
+		\section{Practical Development}\label{sec:PD}
+Arduino Uno is based on ATmega328 microcontroller (MCU). It consists of 14 digital input/output pins, six analogue inputs, a USB connection for programming the onboard MCU, a power jack, an ICSP header and a reset button. It is operated with a 16MHz crystal oscillator and contains everything needed to support the MCU.
+	\subsection{Development}
+Pins Gnd and Vcc of the Bluetooth module are connected to Gnd and +3.3V of Arduino board respectively. Pins 2, 3 and 4 are connected to the three relays (RL1, RL2 and RL3) of the relay board. Pins Vin and Gnd of the relay board are connected to pins Vin and Gnd of Arduino board, respectively.\\[0.3 cm]\\
+Development:\\
+\begin{tabular}{|c|c|}
+	\hline
+	\large	Development &\large Year \\ \hline
+	Arduino uno &2013\\ \hline
+\end{tabular}\\[0.3 cm]\\ It is very easy to use as you simply need to connect it to a computer using a USB cable, or power it with an AC-to-DC adaptor or battery to get started. The MCU onboard is programmed in Arduino programming language using Arduino IDE.\\[0.5 cm]\\In this home automation project circuit, Pins 10 and 11 of Arduino are connected to pins TXD and RXD of the Bluetooth module, respectively, as shown in Fig. 6.\\[0.3 cm]\\
+
+	\begin{minipage}{0.3\textwidth}	
+%	\flushbottom{\includegraphics[width=0.8\textwidth]{fig-6-696x399}}\\
+	\figurename{2: Connections for the appliances}
+\end{minipage}\\[0.3 cm]\\
+Note. Vin is usually used to give input power, but since we are supplying 12V to Arduino using an adaptor, we can use Vin pin on Arduino to power the 12V relay module.
+	\cleardoublepage
+	\section{Conclusion}\label{sec:conclution}
+	Arduino is an open source electronics prototyping platform based on flexible, easy-to-use hardware and software. It is intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments.\vspace*{0.5 cm}The home automation circuit is built around an Arduino Uno board, Bluetooth module HC-05 and a 3-channel relay board. The number of channels depends on the number of appliances you wish to control.
+	\cleardoublepage
+	\section{Reference}
+	A H M Kamal\\ 
+	Professor\\
+	Dept. of CSE\\
+	Jatiya Kabi Kazi Nazrul Islam University.\\ 
+	Phone:\\
+	Email:\\
+	
+	\hspace{-20pt}
+	Mst. Jannatul Ferdous\\ 
+	Associate Professor\\
+	Dept. of CSE\\
+	Jatiya Kabi Kazi Nazrul Islam University.\\ 
+	Phone:\\
+	Email:\\
+		\cleardoublepage
+			\section{Future Work}
+			we will work with Arduino Based Audio Meter next.
+		\cleardoublepage
+\end{document}
+
+
+
+
