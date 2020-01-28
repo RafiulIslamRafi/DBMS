@@ -1,0 +1,194 @@
+Question No: 1
+create table employee
+(employee_name varchar(15),
+street varchar(12),
+city varchar(15) not null,
+primary key(employee_name)
+);
+
+
+create table company
+(company_name varchar(15),
+city varchar(15) not null,
+primary key(company_name)
+);
+
+
+create table manages
+(employee_name varchar(15) not null,
+manager_name varchar(15) not null,
+primary key(employee_name),
+foreign key(employee_name) references employee(employee_name));
+
+
+create table works
+(employee_name varchar(15) not null unique,
+company_name varchar(15) not null,
+salary numeric(10) not null check salary>0,
+join_date date not null,
+primary key(employee_name,company_name),
+foreign key(employee_name) references employee,
+foreign key(company_name) references company
+);
+
+
+
+
+Question no:2
+insert into employee
+	values('Jones','Main','Harrison');
+insert into employee
+	values('Smith','Main','Rye');
+insert into employee
+	values('Hayes','Main','Harrison');
+insert into employee
+	values('Lindsay','Park','Pittsfield');
+insert into employee
+	values('Turner','Putnam','Stamford');
+insert into employee
+	values('Snyder','Lincoln','Rye');
+insert into employee
+	values('Adams','Park','Pittsfield');
+insert into employee
+	values('Glenn','Stand Hill','Woodside');
+insert into employee
+	values('Brooks','Senator','Brooklyn');
+insert into employee
+	values('Green','Walnut','Stamford');
+insert into employee
+	values('McBride','Safety','Rye');
+insert into employee
+	values('Gates','Elm','Rye');
+
+
+
+
+insert into company
+	values('First Bank','Brooklyn');
+insert into company
+	values('Small Bank','Palo Alto');
+insert into company
+	values('IBM','Horseneck');
+insert into company
+	values('PizzaHut','Brooklyn');
+insert into company
+	values('Intel','Horseneck');
+insert into company
+	values('Microsoft','Horseneck');
+insert into company
+	values('Boeing','Bennington');
+insert into company
+	values('Lockheed','Rye');
+
+
+
+
+insert into manages
+	values('Glenn','Green');
+insert into manages
+	values('Smith','Snyder');
+insert into manages
+	values('Green','Turner');
+insert into manages
+	values('Hayes','Jones');
+insert into manages
+	values('Adams','Lindsay');
+insert into manages
+	values('Gates','Jones');
+insert into manages
+	values('McBride','Snyder');
+insert into manages
+	values('Lindsay','Brooks');
+
+
+
+insert into works
+	values('Jones','Microsoft',40000,'2001-01-01');
+insert into works
+	values('Smith','Intel',30000,'2001-01-01');
+insert into works
+	values('Snyder','Small Bank',20000,'2003-01-01');
+insert into works
+	values('Hayes','Microsoft',45000,'2003-06-01');
+insert into works
+	values('Lindsay','Small Bank',25000,'2005-01-01');
+insert into works
+	values('Turner','First Bank',28000,'2005-06-01');
+insert into works
+	values('Adams','Small Bank',15000,'2005-01-01');
+insert into works
+	values('Glenn','First Bank',100000,'2007-06-01');
+insert into works
+	values('Brooks','Small Bank',25000,'2009-01-01');
+insert into works
+	values('Green','First Bank',15000,'2009-06-01');
+insert into works
+	values('McBride','IBM',10000,'2011-01-01');
+insert into works
+	values('Gates','Microsoft',1000000,'2011-01-01');
+
+
+
+
+
+
+
+
+
+
+
+Question No: 3
+Query(first group):
+a)
+select employee_name
+from works
+where company_name = 'First Bank';
+b)
+select employee_name,city
+from works natural join employee
+where works.company_name = 'First Bank' and works.employee_name=employee.employee_name;
+
+another answer:
+select employee_name,city
+from works natural join employee
+where works.company_name = 'First Bank';
+c)
+select employee_name, street, city
+from employee natural join works
+where works.company_name='Small Bank' and works.salary>20000;
+d)
+select employee_name
+from works
+where company_name!='First Bank';
+
+Query(3rd group):
+a)
+select employee_name
+from works
+where company_name = 'Microsoft';
+b)
+select employee_name
+from works natural join company join employee using(employee_name)
+where employee.city = company.city;
+c)
+with emp(employee_name,manager_name,street,city) as
+	(select employee_name,manager_name,street,city
+	from manages join employee using(employee_name)
+	),
+	mng(employee_name,manager_name,street,city) as
+	(select manages.employee_name,manager_name,street,city
+	from manages,employee
+	where manages.manager_name = employee.employee_name
+	)
+select employee_name
+from emp join mng using(employee_name,manager_name,street,city);
+d)
+SELECT company_name
+FROM
+(
+SELECT company_name,MAX(cnt) 
+FROM
+(select company_name,count(employee_name) as cnt
+		from works 
+		group by company_name) as t) as tt;
+
